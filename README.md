@@ -13,7 +13,7 @@ Este projeto segue padrões adotados em ambientes industriais e empresas de méd
 |-------|------------|
 | **Frontend (UI)** | Angular + Angular Material |
 | **Desktop Runtime** | Electron |
-| **Backend (API Local)** | Node.js + Express ou Nest.js (a decidir) |
+| **Backend (API Local)** | Node.js + Nest.js |
 | **ORM / Query Layer** | Prisma ORM |
 | **Banco de Dados** | PostgreSQL |
 | **Arquitetura** | Camadas separadas para UI, API e Persistência |
@@ -55,7 +55,7 @@ Copiar código
 
 ---
 
-## 🗂 Estrutura Recomendável do Projeto
+## 🗂 Estrutura do Projeto
 
 /app
 /frontend (Angular + Material)

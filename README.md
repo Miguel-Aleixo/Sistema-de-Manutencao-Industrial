@@ -1,110 +1,107 @@
-# 🏭 Sistema de Manutenção Industrial (Electron + Angular + Nest + PostgreSQL)
+# Artron
 
-Este projeto é uma aplicação **Desktop** focada na gestão de manutenção industrial, permitindo controlar máquinas, técnicos e ordens de serviço, além de manter um histórico de intervenções. A interface é construída em **Angular** e empacotada com o **Electron** para execução local, enquanto a lógica de negócio e persistência são tratadas por um backend interno feito em **Nest.js**, utilizando **PostgreSQL** com **Prisma ORM**.
+Sistema de Gestão de Manutenção Industrial
 
----
+O **Artron** é um sistema desktop voltado para empresas que desejam organizar e acompanhar atividades de manutenção industrial.  
+Ele permite registrar máquinas, planejamentos de manutenção preventiva, ordens de serviço corretivas e históricos completos de execução.
 
-## 🎯 Objetivo
-
-O sistema auxilia equipes de manutenção a registrar e acompanhar manutenções preventivas e corretivas, gerenciar ordens de serviço e manter rastreabilidade histórica.
+O foco é tornar o fluxo de manutenção mais **organizado, rastreável e eficiente**.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-| Camada | Tecnologia |
-|-------|------------|
-| **Frontend (UI)** | Angular + Angular Material |
-| **Backend (API Interna)** | Nest.js (Node.js) |
-| **ORM & Mapeamento** | Prisma ORM |
-| **Banco de Dados** | PostgreSQL |
-| **Aplicação Desktop** | Electron |
-| **Linguagem Principal** | TypeScript |
+| Camada | Tecnologia | Descrição |
+|-------|------------|-----------|
+| **Frontend (Desktop UI)** | **Electron + Angular** | Interface desktop com componentes Angular Material integrados ao ambiente local via Electron. |
+| **Design de UI** | **Angular Material** | Biblioteca oficial de UI do Angular, adotada amplamente por empresas. |
+| **Backend / API** | **NestJS** | Framework Node.js modular e escalável, ideal para aplicações corporativas. |
+| **ORM / Acesso ao Banco** | **Prisma** | ORM moderno e tipado para comunicação segura e produtiva com o banco. |
+| **Banco de Dados** | **PostgreSQL** | Banco relacional robusto, confiável e gratuito. |
 
 ---
 
-## 📦 Funcionalidades
+## 🧩 Funcionalidades Principais (versão inicial)
 
-### Máquinas
-- Cadastrar e editar máquinas
-- Registrar setor e status
-- Ativar / Inativar equipamentos
-
-### Técnicos
-- Cadastro com nível (Júnior / Pleno / Sênior)
-- Especialização por área de trabalho
-
-### Ordens de Serviço (OS)
-- Criar OS vinculada a técnico e máquina
-- Atualizar status (`ABERTA`, `EM_ANDAMENTO`, `FINALIZADA`)
-- Registrar data de abertura e fechamento
-
-### Histórico
-- Entrada automática a cada mudança significativa
-- Visualização por máquina ou técnico
+- Cadastro de máquinas e equipamentos
+- Registro de ordens de serviço (preventiva e corretiva)
+- Controle de responsáveis / técnicos
+- Histórico de manutenção executada
+- Prioridade e status de cada ordem
+- Dashboards com indicadores básicos
 
 ---
 
-## 🗂 Estrutura do Projeto (Prevista)
+## 📂 Estrutura Geral do Projeto
 
-/app
-/frontend (Angular)
-/src
-/app
-/modules
-/shared
-main.ts
-/backend (Nest.js)
-/src
-/modules
-maquinas
-tecnicos
-ordens
-historico
-/common
-main.ts
-/electron
-main.js
-prisma/schema.prisma
-package.json
+artron/
+├─ backend/ → API NestJS + Prisma
+├─ frontend/ → Angular + Material
+└─ desktop-shell/ → Electron integrando tudo
 
 yaml
 Copiar código
 
 ---
 
-## 🗃 Modelagem de Dados
+## 🛠️ Como Executar (quando o projeto estiver pronto)
 
-Máquina(id, nome, setor, status, dataCadastro)
-Técnico(id, nome, nível, especialidade)
-OrdemServico(id, maquinaId, tecnicoId, descricao, status, dataAbertura, dataFechamento)
-Histórico(id, ordemId, evento, data)
-
-yaml
-Copiar código
-
----
-
-## 💻 Rodando o projeto (quando estiver implementado)
-
-```bash
-# instalar dependências
+### 1. Instale dependências
 npm install
 
-# configurar migrations do banco
+shell
+Copiar código
+
+### 2. Configure o banco PostgreSQL
+Crie um banco chamado:
+artron_db
+
+shell
+Copiar código
+
+### 3. Gere o schema do Prisma
 npx prisma migrate dev
 
-# iniciar backend
-npm run start:backend
+shell
+Copiar código
 
-# iniciar frontend
-npm run start:frontend
+### 4. Rode o backend
+cd backend
+npm run start:dev
 
-# iniciar app desktop
-npm run electron:start
-📸 Demonstração (adicionar depois)
-Prints ou vídeo da aplicação funcionando
- ```
+shell
+Copiar código
 
-## 📝 Licença
-Projeto livre para estudos e apresentação em portfólio.
+### 5. Rode o frontend
+cd frontend
+ng serve
+
+shell
+Copiar código
+
+### 6. Inicie o app desktop
+cd desktop-shell
+npm start
+
+yaml
+Copiar código
+
+---
+
+## 🎯 Objetivo do Projeto
+
+Este projeto foi criado com propósito de estudo e evolução profissional, explorando:
+- Arquitetura limpa entre frontend, backend e camada de integração
+- Desenvolvimento desktop moderno sem abandono do ecossistema web
+- Tecnologias utilizadas amplamente em empresas de médio e grande porte
+
+---
+
+## 🧱 Status do Projeto
+> Em desenvolvimento.
+
+---
+
+## 👤 Autor
+**Miguel Aleixo**  
+Desenvolvedor Web / Estudante de Tecnologia  

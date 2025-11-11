@@ -1,9 +1,12 @@
-# 🏭 Sistema de Manutenção Industrial (Desktop + Web Core)
+# 🏭 Sistema de Manutenção Industrial (Electron + Angular + Nest + PostgreSQL)
 
-Aplicação desktop capaz de gerenciar ordens de serviço, máquinas, técnicos e históricos de manutenção industrial.  
-A interface é construída em **Angular**, empacotada com **Electron** para execução local, e o backend utiliza **Node.js + Prisma + PostgreSQL**.
+Este projeto é uma aplicação **Desktop** focada na gestão de manutenção industrial, permitindo controlar máquinas, técnicos e ordens de serviço, além de manter um histórico de intervenções. A interface é construída em **Angular** e empacotada com o **Electron** para execução local, enquanto a lógica de negócio e persistência são tratadas por um backend interno feito em **Nest.js**, utilizando **PostgreSQL** com **Prisma ORM**.
 
-Este projeto segue padrões adotados em ambientes industriais e empresas de médio e grande porte, com módulos bem definidos e arquitetura escalável.
+---
+
+## 🎯 Objetivo
+
+O sistema auxilia equipes de manutenção a registrar e acompanhar manutenções preventivas e corretivas, gerenciar ordens de serviço e manter rastreabilidade histórica.
 
 ---
 
@@ -12,60 +15,54 @@ Este projeto segue padrões adotados em ambientes industriais e empresas de méd
 | Camada | Tecnologia |
 |-------|------------|
 | **Frontend (UI)** | Angular + Angular Material |
-| **Desktop Runtime** | Electron |
-| **Backend (API Local)** | Node.js + Nest.js |
-| **ORM / Query Layer** | Prisma ORM |
+| **Backend (API Interna)** | Nest.js (Node.js) |
+| **ORM & Mapeamento** | Prisma ORM |
 | **Banco de Dados** | PostgreSQL |
-| **Arquitetura** | Camadas separadas para UI, API e Persistência |
+| **Aplicação Desktop** | Electron |
+| **Linguagem Principal** | TypeScript |
 
 ---
 
-## 🎯 Objetivo
+## 📦 Funcionalidades
 
-Fornecer uma solução para gerenciamento de manutenção, permitindo:
+### Máquinas
+- Cadastrar e editar máquinas
+- Registrar setor e status
+- Ativar / Inativar equipamentos
 
-- Controle de máquinas e seus dados operacionais.
-- Registro de manutenções preventivas e corretivas.
-- Criação, atualização e finalização de Ordens de Serviço (OS).
-- Acompanhamento de técnicos envolvidos.
-- Histórico detalhado de eventos por máquina ou técnico.
+### Técnicos
+- Cadastro com nível (Júnior / Pleno / Sênior)
+- Especialização por área de trabalho
 
----
+### Ordens de Serviço (OS)
+- Criar OS vinculada a técnico e máquina
+- Atualizar status (`ABERTA`, `EM_ANDAMENTO`, `FINALIZADA`)
+- Registrar data de abertura e fechamento
 
-## 📌 Funcionalidades Planejadas
-
-| Módulo | Funcionalidades |
-|-------|----------------|
-| Máquinas | Cadastrar, listar, editar, inativar |
-| Técnicos | Registrar, categorizar por nível e especialidade |
-| Ordens de Serviço (OS) | Criar, atualizar status, vincular máquina e técnico, registrar tempo |
-| Histórico | Consultar linha do tempo de manutenções e finalizações |
-
----
-
-## 📊 Modelagem Inicial (Entidades)
-
-Máquina (id, nome, setor, status, dataCadastro)
-Técnico (id, nome, nível, especialidade)
-OrdemServico (id, maquinaId, tecnicoId, descricao, status, dataAbertura, dataFechamento)
-Historico (id, ordemId, evento, data)
-
-yaml
-Copiar código
+### Histórico
+- Entrada automática a cada mudança significativa
+- Visualização por máquina ou técnico
 
 ---
 
-## 🗂 Estrutura do Projeto
+## 🗂 Estrutura do Projeto (Prevista)
 
 /app
-/frontend (Angular + Material)
-/backend
-server.js (ou main.ts se Nest)
+/frontend (Angular)
 /src
-/routes
-/controllers
-/services
-/prisma
+/app
+/modules
+/shared
+main.ts
+/backend (Nest.js)
+/src
+/modules
+maquinas
+tecnicos
+ordens
+historico
+/common
+main.ts
 /electron
 main.js
 prisma/schema.prisma
@@ -76,27 +73,37 @@ Copiar código
 
 ---
 
-## 🔧 Comandos (quando implementado)
+## 🗃 Modelagem de Dados
+
+Máquina(id, nome, setor, status, dataCadastro)
+Técnico(id, nome, nível, especialidade)
+OrdemServico(id, maquinaId, tecnicoId, descricao, status, dataAbertura, dataFechamento)
+Histórico(id, ordemId, evento, data)
+
+yaml
+Copiar código
+
+---
+
+## 💻 Rodando o projeto (quando estiver implementado)
 
 ```bash
+# instalar dependências
 npm install
+
+# configurar migrations do banco
 npx prisma migrate dev
-npm run build:frontend
+
+# iniciar backend
+npm run start:backend
+
+# iniciar frontend
+npm run start:frontend
+
+# iniciar app desktop
 npm run electron:start
-✔️ Status do Projeto
- Planejamento
-
- Modelagem Prisma
-
- Backend com PostgreSQL
-
- Angular + Material
-
- Integração Electron
-
- Módulos CRUD
-
- Build final
+📸 Demonstração (adicionar depois)
+Prints ou vídeo da aplicação funcionando
 
 📝 Licença
-Projeto aberto para estudo e portfólio.
+Projeto livre para estudos e apresentação em portfólio.

@@ -106,5 +106,5 @@ npm run electron:start
 Prints ou vídeo da aplicação funcionando
  ```
 
-📝 Licença
+## 📝 Licença
 Projeto livre para estudos e apresentação em portfólio.
